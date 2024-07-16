@@ -6,6 +6,7 @@ terraform {
     }
   }
 
+  # Added backend for state management
   backend "s3" {
    bucket  = "state-bucket-terraform-201"
    region = "us-east-1"
