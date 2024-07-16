@@ -1,6 +1,6 @@
 resource "aws_launch_template" "web" {
   name_prefix   = "lt-"
-  image_id      = "ami-0bcdb47863b39579f"
+  image_id      = "ami-01fccab91b456acc2"
   instance_type = "t2.micro"
   key_name      = aws_key_pair.deployer.key_name
 

@@ -29,7 +29,7 @@ resource "aws_route53_record" "static-app" {
   type    = "A"
 
   alias {
-    name                   = "s3-website.us-east-2.amazonaws.com"
+    name                   = "s3-website.us-east-1.amazonaws.com"
     zone_id                = aws_s3_bucket.bucket.hosted_zone_id
     evaluate_target_health = false
   }
