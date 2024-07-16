@@ -1,1 +1,38 @@
 
+name: Terraform Destroy
+on:
+ workflow_dispatch:
+
+env: 
+  TF_LOG: INFO
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  BUCKET_TF_STATE: ${{ secrets.BUCKET_TF_STATE}}
+
+jobs:
+ tf-destroy:
+   name: "Terraform Infrastructure Destroy"
+   runs-on: ubuntu-latest
+   defaults:
+      run:
+        shell: bash
+        working-directory: ./terraform
+      
+   steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      - name: Setup Terraform                                                                      
+        uses: hashicorp/setup-terraform@v2
+
+      - name: Terraform Init
+        id: init
+        run: terraform init
+        
+      - name: Show Destroy plan
+        run: terraform plan -destroy
+        continue-on-error: true
+
+      - name: Terraform destroy
+        id: destroy
+        run: terraform destroy -auto-approve
