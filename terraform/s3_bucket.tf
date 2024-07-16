@@ -49,11 +49,12 @@ resource "aws_s3_bucket_policy" "bucket_policy" {
 resource "aws_s3_object" "index" {
   for_each     = fileset("${path.module}/../content", "**/*.{html,css,js}")
   bucket       = aws_s3_bucket.bucket.id
-  key          = replace(each.value, "^../content/", "")
-  source       = "${path.module}/../${each.value}"
+  key          = replace(each.value, "^content/", "")
+  source       = "${path.module}/../content/${each.value}"
   content_type = lookup(local.content_types, regex("\\.[^.]+$", each.value), null)
-  source_hash  = filemd5("${path.module}/../${each.value}")
+  source_hash  = filemd5("${path.module}/../content/${each.value}")
 }
+
 
 resource "aws_s3_bucket_website_configuration" "static_website" {
   bucket = aws_s3_bucket.bucket.id
