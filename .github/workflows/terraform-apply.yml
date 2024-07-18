@@ -35,6 +35,9 @@ jobs:
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.9.1
+
+      - name: Run Tfsec security scan
+        uses: aquasecurity/tfsec-action@v1.0.0
       
       - name: Terraform init
         id: init
