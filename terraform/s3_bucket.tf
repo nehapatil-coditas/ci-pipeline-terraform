@@ -1,7 +1,10 @@
+# Creating S3 bucket
 resource "aws_s3_bucket" "bucket" {
   bucket        = "nehapatil.xyz"
   force_destroy = true
+  
 }
+
 
 resource "aws_s3_bucket_cors_configuration" "cors_policy" {
   bucket = aws_s3_bucket.bucket.id
