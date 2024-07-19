@@ -3,6 +3,10 @@ name: Terraform Destroy
 on:
  workflow_dispatch:
 
+permissions:
+  id-token: write  
+  contents: read
+  
 env: 
   BUCKET_TF_STATE: ${{ secrets.BUCKET_TF_STATE}}
 
