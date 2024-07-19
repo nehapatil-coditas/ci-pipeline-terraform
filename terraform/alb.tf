@@ -1,6 +1,7 @@
 # Load Balancer
 resource "aws_lb" "web_elb" {
   name               = "web-alb"
+  #tfsec:ignore:aws-elb-alb-not-public
   internal           = false
   load_balancer_type = "application"
   security_groups    = ["${aws_security_group.demosg1.id}"]

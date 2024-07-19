@@ -1,4 +1,4 @@
-# tfsec:ignore:aws-ec2-enforce-http-token-imds
+# tfsec:ignore:aws-ec2-enforce-launch-config-http-token-imds
 resource "aws_launch_template" "web" {
   name_prefix   = "lt-"
   image_id      = "ami-01fccab91b456acc2"
