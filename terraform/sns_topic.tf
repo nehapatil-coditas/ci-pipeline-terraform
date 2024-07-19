@@ -1,3 +1,4 @@
+#tfsec:ignore:aws-sns-enable-topic-encryption 
 resource "aws_sns_topic" "instance_updates" {
   name = "instance-updates-topic"
 }

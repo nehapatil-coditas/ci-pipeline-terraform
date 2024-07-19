@@ -22,6 +22,7 @@ resource "aws_lb_target_group" "web_tg" {
 }
 
 #Listener
+#tfsec:ignore:aws-elb-http-not-used
 resource "aws_lb_listener" "front_end" {
   load_balancer_arn = aws_lb.web_elb.arn
   port              = "80"

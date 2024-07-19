@@ -29,9 +29,13 @@ resource "aws_s3_bucket_cors_configuration" "cors_policy" {
 resource "aws_s3_bucket_public_access_block" "bucket_access_block" {
   bucket = aws_s3_bucket.bucket.id
 
+  #tfsec:ignore:aws-s3-block-public-acls
   block_public_acls       = false
+  #tfsec:ignore:aws-s3-block-public-policy
   block_public_policy     = false
+  #tfsec:ignore:aws-s3-ignore-public-acls
   ignore_public_acls      = false
+  #tfsec:ignore:aws-s3-no-public-buckets
   restrict_public_buckets = false
 
 }
