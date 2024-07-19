@@ -9,6 +9,7 @@ resource "aws_lb" "web_elb" {
     "${aws_subnet.demosubnet1.id}"
   ]
   enable_cross_zone_load_balancing = true
+  drop_invalid_header_fields = true
 }
 
 #Target group

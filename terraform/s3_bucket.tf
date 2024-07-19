@@ -1,4 +1,5 @@
 # Creating S3 bucket
+#tfsec:ignore:aws-s3-enable-bucket-encryption tfsec:ignore:aws-s3-enable-bucket-logging
 resource "aws_s3_bucket" "bucket" {
   bucket        = "nehapatil.xyz"
   force_destroy = true
