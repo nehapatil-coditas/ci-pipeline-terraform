@@ -12,6 +12,7 @@ resource "aws_s3_bucket_versioning" "bucket_versioning" {
   }
 }
 
+# Added cors policy
 resource "aws_s3_bucket_cors_configuration" "cors_policy" {
   bucket = aws_s3_bucket.bucket.id
 

@@ -36,6 +36,30 @@ jobs:
         with:
           terraform_version: 1.9.1
 
+      # TFLint - Terraform Check
+      - uses: actions/cache@v2
+        name: Cache plugin dir
+        with:
+          path: ~/.tflint.d/plugins
+          key: ${{ matrix.os }}-tflint-${{ hashFiles('.tflint.hcl') }}
+
+      - uses: terraform-linters/setup-tflint@v2
+        name: Setup TFLint
+        with:
+          github_token: ${{ secrets.CI_GITHUB_TOKEN }}
+        
+    # Print TFLint version
+      - name: Show version
+        run: tflint --version
+        
+    # Install plugins
+      - name: Init TFLint
+        run: tflint --init
+        
+    # Run tflint command in each directory recursively # use --force if you want to continue with workflow although errors are there
+      - name: Run TFLint
+        run: tflint -f compact --recursive 
+
       - name: Run Tfsec security scan
         uses: aquasecurity/tfsec-action@v1.0.0
       
