@@ -4,6 +4,7 @@ resource "aws_security_group" "demosg1" {
   vpc_id      = aws_vpc.demovpc.id
 
   ingress {
+    description = "Allow SSH traffic from anywhere"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
@@ -11,6 +12,7 @@ resource "aws_security_group" "demosg1" {
   }
 
   ingress {
+    description = "Allow HTTP traffic from anywhere"
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
@@ -18,6 +20,7 @@ resource "aws_security_group" "demosg1" {
   }
 
   ingress {
+    description = "Allow HTTPS traffic from anywhere"
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
@@ -25,6 +28,7 @@ resource "aws_security_group" "demosg1" {
   }
 
   egress {
+    description = "All outgoing traffic allowded"
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
