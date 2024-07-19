@@ -57,15 +57,3 @@ resource "aws_route_table_association" "rt2" {
   route_table_id = aws_route_table.route.id
 }
 
-# VPC flow log
-resource "aws_s3_bucket" "log_bucket" {
-  bucket = "log_bucket_201"
-}
-
-resource "aws_flow_log" "flow_logs" {
-  log_destination      = aws_s3_bucket.log_bucket.arn
-  log_destination_type = "s3"
-  traffic_type         = "ALL"
-  vpc_id               = aws_vpc.demovpc.id
-}
-
