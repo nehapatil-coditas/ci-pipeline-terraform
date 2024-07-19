@@ -19,4 +19,8 @@ resource "aws_launch_template" "web" {
   lifecycle {
     create_before_destroy = true
   }
+
+  metadata_options {
+    http_tokens = "required"
+  }
 }
