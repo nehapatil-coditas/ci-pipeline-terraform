@@ -20,7 +20,7 @@ resource "aws_wafregional_rule" "WafRule" {
 
 resource "aws_wafregional_web_acl" "TFWebACL" {
   name        = "TFWebACL"
-  metric_name = "web_acl_metric"
+  metric_name = "WebACLMetric"
 
   default_action {
     type = "ALLOW"
