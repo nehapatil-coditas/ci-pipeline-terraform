@@ -38,6 +38,6 @@ resource "aws_wafregional_web_acl" "web_acl" {
 
 
 resource "aws_wafregional_web_acl_association" "waf_association" {
-  resource_arn = "${aws_lb.web_alb.arn}"
+  resource_arn = "${aws_lb.web_elb.arn}"
   web_acl_id   = "${aws_wafregional_web_acl.web_acl.id}"
 }
