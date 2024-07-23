@@ -57,7 +57,7 @@ resource "aws_wafv2_web_acl" "TFWebACL" {
 
     statement {
       geo_match_statement {
-        country_codes = "IN"
+        country_codes = ["IN"]
       }
     }
 
