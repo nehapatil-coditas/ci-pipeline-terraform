@@ -15,10 +15,12 @@ resource "aws_wafv2_web_acl" "TFWebACL" {
   scope       = "REGIONAL"  
   description = "My WAFv2 Web ACL"
 
+    #If none of the below rules match then allow the traffic
   default_action {
     allow {}
   }
 
+    # Rule to block my IP using IPset
   rule {
     name     = "IPMatchRule"
     priority = 1
@@ -43,6 +45,27 @@ resource "aws_wafv2_web_acl" "TFWebACL" {
     cloudwatch_metrics_enabled = true
     metric_name                = "WebACLMetric"
     sampled_requests_enabled   = true
+  }
+
+    # Rule to block request from INDIA
+  rule {
+    name = "IndiaGeoMatchRule"
+    priority = 2
+    action {
+      block {}
+    }
+
+    statement {
+      geo_match_statement {
+        country_codes = "IN"
+      }
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name = "GeoACLMetric"
+      sampled_requests_enabled = true
+    }
   }
 }
 
