@@ -1,4 +1,4 @@
-resource "aws_wafregional_ipset" "ipset_" {
+resource "aws_wafregional_ipset" "ipset" {
   name = "tfIPSet"
 
   ip_set_descriptor {
@@ -39,5 +39,5 @@ resource "aws_wafregional_web_acl" "tf_web_acl" {
 
 resource "aws_wafregional_web_acl_association" "waf_association" {
   resource_arn = "${aws_lb.web_elb.arn}"
-  web_acl_id   = "${aws_wafregional_web_acl.web_acl.id}"
+  web_acl_id   = "${aws_wafregional_web_acl.tf_web_acl.id}"
 }
