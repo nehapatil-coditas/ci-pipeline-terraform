@@ -7,7 +7,7 @@ resource "aws_wafregional_ipset" "ipset" {
   }
 }
 
-resource "aws_wafregional_rule" "waf_rule" {
+resource "aws_wafregional_rule" "WafRule" {
   name        = "WAFRule"
   metric_name = "WAFRuleMetric"
 
@@ -18,8 +18,8 @@ resource "aws_wafregional_rule" "waf_rule" {
   }
 }
 
-resource "aws_wafregional_web_acl" "tf_web_acl" {
-  name        = "tf_web_acl"
+resource "aws_wafregional_web_acl" "TFWebACL" {
+  name        = "TFWebACL"
   metric_name = "web_acl_metric"
 
   default_action {
@@ -32,12 +32,12 @@ resource "aws_wafregional_web_acl" "tf_web_acl" {
     }
 
     priority = 1
-    rule_id  = "${aws_wafregional_rule.waf_rule.id}"
+    rule_id  = "${aws_wafregional_rule.WafRule.id}"
   }
 }
 
 
-resource "aws_wafregional_web_acl_association" "waf_association" {
+resource "aws_wafregional_web_acl_association" "WAFAssociation" {
   resource_arn = "${aws_lb.web_elb.arn}"
-  web_acl_id   = "${aws_wafregional_web_acl.tf_web_acl.id}"
+  web_acl_id   = "${aws_wafregional_web_acl.TFWebACL.id}"
 }
