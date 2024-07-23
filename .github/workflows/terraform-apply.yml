@@ -62,7 +62,7 @@ jobs:
 
       - name: Terraform plan
         id: plan
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'push'
         run: terraform plan
         continue-on-error: true
 

@@ -1,4 +1,4 @@
-resource "aws_wafregional_ipset" "ipset" {
+resource "aws_wafregional_ipset" "ipset_" {
   name = "tfIPSet"
 
   ip_set_descriptor {
@@ -18,8 +18,8 @@ resource "aws_wafregional_rule" "waf_rule" {
   }
 }
 
-resource "aws_wafregional_web_acl" "web_acl" {
-  name        = "web_acl"
+resource "aws_wafregional_web_acl" "tf_web_acl" {
+  name        = "tf_web_acl"
   metric_name = "web_acl_metric"
 
   default_action {
