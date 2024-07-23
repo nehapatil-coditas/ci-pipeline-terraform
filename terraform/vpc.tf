@@ -57,6 +57,7 @@ resource "aws_route_table_association" "rt2" {
   route_table_id = aws_route_table.route.id
 }
 
+<<<<<<< HEAD
 # # VPC flow log
 # resource "aws_s3_bucket" "log_bucket" {
 #   bucket = "log_bucket_201"
@@ -69,3 +70,5 @@ resource "aws_route_table_association" "rt2" {
 #   vpc_id               = aws_vpc.demovpc.id
 # }
 
+=======
+>>>>>>> e8a298e99ed019c864e503f5dab04747b4c5f91b
